@@ -5,20 +5,23 @@
 ## 접근방법
 * ID 별로 groupby를 통한 feature 생성
 * unstack을 통한 multi-groupby feature 생성
-* sklearn의 SelectFromModel 패키지를 통한 feature selection(threshold : 4.5*mean ~ 5.0*mean 데이터셋마다 상이함)
+* 결측치를 처리하는 방법에 따라 총 7가지의 데이터 셋 구성(대체안하는 경우, ffiil, bfill 조합)
+* sklearn의 SelectFromModel 패키지를 통한 feature selection(threshold : 4.5*mean ~ 5.0*mean 데이터셋마다 상이)
 * Bayesian Optimization
 * LightGBM, CatBoost
 * OOF(5Fold)
+* 각 예측 값들의 상관관계 파악 후 상관관계 낮은 값끼리 power mean(멱평균) 앙상블
 ## REVIEW
 * 머신러닝을 배우고 처음 참여한 대회이다.
+* 여러 개의 데이터 셋 구성을 앙상블함으로써 서로 상이한 데이터셋을 통해 다양한 방면으로 예측하는 것의 중요성을 깨달았다.
 * ROC-AUC에 대한 이해도가 부족했다. 평가지표에 대한 이해도가 반드시 수반되어야 함을 깨달았다.
 * 무식하면 용감하다는 것을 몸소 느낀 대회였다. 수많은 경우의 수를 모두 groupby, multi-groupby를 통해 구현했다.
 * 시계열적인 요소를 고려하지 못했다. 시계열적인 feature는 다른 사람이 올려준 코드 공유를 참고했다.(untitled.ipynb)
 * 하이퍼파라미터를 탐색함에 있어서 Grid search, Random search같은 기본적인 방법을 사용하지 않고 새로 배웠던 Bayesian Optimization을 사용했다.
 * 코드가 너무 길다. 일부 반복적인 부분은 함수를 통해 처리했어야 했다. 좀 더 효율적인 코딩이 필요함을 느꼈다.
 ## LB
-* public 0.84416 : 26th / 418
-* private 0.84005 : 24th / 418
+* (public) 0.84416 : 26th / 418
+* (private) 0.84005 : 24th / 418
 ## Reference
 * https://dacon.io/competitions/official/235687/codeshare/2356?page=1&dtype=recent - 시계열 관련 feature
 * https://dacon.io/competitions/official/235687/codeshare/2422?page=1&dtype=recent - EDA
